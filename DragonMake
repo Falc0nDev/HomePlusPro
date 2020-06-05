@@ -1,0 +1,58 @@
+---
+name: HomePlus
+id: me.kritanta.HomePlusPro
+icmd: killall -9 backboardd
+author: _kritanta
+version: 1.0.0-prerelease
+depends: preferenceloader
+
+HomePlus:
+    targetvers: 7.0
+    archs:
+        - armv7
+        - arm64
+        - arm64e
+    type: tweak
+    cflags: -includePrefix.h -w -F./frameworks/
+    include:
+        - ./HomePlusEditor/
+        - ./HomePlusEditor/Data/ 
+        - ./HomePlusEditor/Data/DefaultConfiguration/ 
+        - ./HomePlusEditor/EditorView/ 
+        - ./HomePlusEditor/EditorView/HPControllerViews/ 
+        - ./HomePlusEditor/Extensions/ 
+        - ./HomePlusEditor/Extensions/ExtensionViews/ 
+        - ./HomePlusEditor/Hitbox/ 
+        - ./HomePlusEditor/Managers/ 
+        - ./HomePlusEditor/Settings/ 
+        - ./HomePlusEditor/Tutorial/ 
+        - ./HomePlusEditor/Utility/
+        - ../../../
+    wild_recurse: Yes
+    ldflags: "-ObjC"
+    logos_files:
+        - "**/*.xm"
+        - Hooks/SpringBoard.x
+        - HomePlus.x
+    entfile: ent.plist
+    objc_files:
+        - "HomePlusEditor/**/*.m"
+        - Hooks/ios13/GestureRecognition.mm
+    frameworks:
+        - AVFoundation
+        - Accelerate
+        - CoreMedia
+        - IOKit
+        - MobileCoreServices
+        - WebKit
+
+HomePlusPrefs:
+    dir: homeplusprefs
+    type: prefs
+    objc_files:
+        - HPPRootListController.m
+
+HPResources:
+    dir: HPResources
+    type: resource-bundle
+    install_location: "/Library/Application\ Support/HomePlus.bundle"
