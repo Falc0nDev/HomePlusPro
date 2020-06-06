@@ -55,34 +55,6 @@
         o.x = o.x + left;
 
     return o;
-
-	//
-	CGFloat iconSpacing =
-	(
-		self.frame.size.width-(
-				%orig(first, arg2).x*2
-				+
-				self.subviews[0].bounds.size.width*self.iconsInRowForSpacingCalculation
-			)
-	)/(self.iconsInRowForSpacingCalculation-1);
-	
-	CGFloat iconOffsetAmount =
-	(
-		(
-			self.frame.size.width
-			- ( iconsInFinalRow * self.subviews[0].bounds.size.width )
-			- ( iconsInFinalRow * iconSpacing )
-			+ iconSpacing
-		)
-		/ 2
-	)
-	- (%orig(first, arg2)).x;
-
-	if (actualIndexForIcon >= startingIndex)
-	{
-		o.x = o.x+iconOffsetAmount;
-	}
-	return o;
 }
 
 - (void)layoutSubviews 
